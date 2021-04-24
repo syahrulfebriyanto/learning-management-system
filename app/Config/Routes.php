@@ -39,6 +39,7 @@ $routes->get('/admin/informasi/ubah/(:segment)', 'Admin\Datainformasi::ubah/$1')
 $routes->get('/admin/informasi/(:any)', 'Admin\Datainformasi::detail/$1');
 $routes->add('/admin/informasi/update', 'Admin\Datainformasi::update');
 $routes->delete('/admin/informasi/hapus/(:num)', 'Admin\Datainformasi::hapus/$1');
+$routes->get('/', 'Guru\Beranda::index');
 
 
 // $routes->group('admin', function ($routes) {
