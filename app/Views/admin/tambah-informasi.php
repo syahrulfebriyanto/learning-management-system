@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="judul" class="col-sm-2 col-form-label">Konten <sup class="text-danger">*</sup></label>
+                            <label for="konten" class="col-sm-2 col-form-label">Konten <sup class="text-danger">*</sup></label>
                             <div class="col-sm-10">
                                 <textarea class="form-control <?= ($validation->hasError('konten')) ? 'is-invalid' : ''; ?>" name="konten" id="editor1" rows="10" cols="80">
                                 </textarea>

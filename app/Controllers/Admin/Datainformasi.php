@@ -4,18 +4,20 @@ namespace App\Controllers\Admin;
 
 use App\Models\Informasi;
 use App\Controllers\BaseController;
+use App\Models\InformasiModel;
 
-class Datainformasi extends BaseController
+class DataInformasi extends BaseController
 {
+	protected $informasiModel;
 	public function __construct()
 	{
-		$this->informasi = new Informasi();
+		$this->informasiModel = new InformasiModel();
 	}
 	public function index()
 	{
 		$data = [
 			'title' => 'Data Informasi',
-			'data_informasi' => $this->informasi->findAll()
+			'data_informasi' => $this->informasiModel->findAll()
 		];
 		return view('admin/data-informasi', $data);
 	}
@@ -29,6 +31,7 @@ class Datainformasi extends BaseController
 	}
 	public function simpan()
 	{
+
 		if (!$this->validate([
 			'judul' => [
 				'rules' => 'required',
@@ -46,8 +49,9 @@ class Datainformasi extends BaseController
 			return redirect()->to('/admin/informasi/tambah')->withInput();
 		}
 
+
 		$slug = url_title($this->request->getVar('judul'), '-', true);
-		$this->informasi->save([
+		$this->informasiModel->save([
 			'judul' => $this->request->getVar('judul'),
 			'slug' => $slug,
 			'konten' => $this->request->getVar('konten'),
@@ -59,7 +63,7 @@ class Datainformasi extends BaseController
 	{
 		$data = [
 			'title' => 'Detail Informasi',
-			'informasi' => $this->informasi->getInformasi($slug)
+			'informasi' => $this->informasiModel->getInformasi($slug)
 		];
 		if (empty($data['informasi'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Judul informasi ' . $slug . ' tidak tersedia.');
@@ -71,7 +75,7 @@ class Datainformasi extends BaseController
 		$data = [
 			'title' => 'Ubah Informasi',
 			'validation' => \config\Services::validation(),
-			'informasi' => $this->informasi->getInformasi($slug)
+			'informasi' => $this->informasiModel->getInformasi($slug)
 		];
 		return view('admin/ubah-informasi', $data);
 	}
@@ -94,7 +98,7 @@ class Datainformasi extends BaseController
 			return redirect()->to('/admin/informasi/ubah/' . $this->request->getVar('slug'))->withInput();
 		}
 		$slug = url_title($this->request->getVar('judul'), '-', true);
-		$this->informasi->save([
+		$this->informasiModel->save([
 			'id' => $this->request->getVar('id'),
 			'judul' => $this->request->getVar('judul'),
 			'slug' => $slug,
@@ -105,7 +109,7 @@ class Datainformasi extends BaseController
 	}
 	public function hapus($id)
 	{
-		$this->informasi->delete($id);
+		$this->informasiModel->delete($id);
 		session()->setFlashdata('pesan', 'Informasi Berhasil Dihapus');
 		return redirect()->to('/admin/informasi');
 	}

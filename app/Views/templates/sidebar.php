@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?= $title == 'Beranda' ? 'active' : '' ?>">
-        <a class="nav-link" href="admin">
+        <a class="nav-link" href="<?= base_url() ?>/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Beranda</span></a>
     </li>
@@ -24,13 +24,13 @@
     <div class="sidebar-heading">
         Menu
     </div>
-    <li class="nav-item <?= $title == 'Data Informasi' || 'Tambah Informasi' || 'Ubah Informasi' || 'Detail Informasi' ? 'active' : '' ?>">
+    <li class="nav-item <?= $title == 'Data Informasi' || 'Tambah Data Informasi' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url() ?>/admin/informasi">
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Informasi</span></a>
     </li>
-    <li class="nav-item <?= $title == 'Peserta Didik' ? 'active' : '' ?>">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item <?= $title == 'Data Peserta Didik' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url() ?>/admin/student">
             <i class="fas fa-fw fa-users"></i>
             <span>Peserta Didik</span></a>
     </li>

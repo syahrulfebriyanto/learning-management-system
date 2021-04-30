@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Informasi extends Model
+class InformasiModel extends Model
 {
 	protected $table                = 'informasi';
 	protected $primaryKey           = 'id';
@@ -18,8 +18,10 @@ class Informasi extends Model
 	protected $updatedField         = 'updated_at';
 	protected $deletedField         = 'deleted_at';
 
+
 	public function getInformasi($slug = false)
 	{
+		// jika slugnya  kosong cari semua data
 		if ($slug == false) {
 			return $this->findAll();
 		}

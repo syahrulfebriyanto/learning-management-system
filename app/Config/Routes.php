@@ -32,13 +32,21 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Admin\Beranda::index');
-$routes->get('/admin/informasi', 'Admin\Datainformasi::index');
-$routes->get('/admin/informasi/tambah', 'Admin\Datainformasi::tambah');
-$routes->add('/admin/informasi/simpan', 'Admin\Datainformasi::simpan');
-$routes->get('/admin/informasi/ubah/(:segment)', 'Admin\Datainformasi::ubah/$1');
-$routes->get('/admin/informasi/(:any)', 'Admin\Datainformasi::detail/$1');
-$routes->add('/admin/informasi/update', 'Admin\Datainformasi::update');
-$routes->delete('/admin/informasi/hapus/(:num)', 'Admin\Datainformasi::hapus/$1');
+$routes->get('/admin/informasi', 'Admin\DataInformasi::index');
+$routes->get('/admin/informasi/tambah', 'Admin\DataInformasi::tambah');
+$routes->add('/admin/informasi/simpan', 'Admin\DataInformasi::simpan');
+$routes->get('/admin/informasi/ubah/(:segment)', 'Admin\DataInformasi::ubah/$1');
+$routes->get('/admin/informasi/(:any)', 'Admin\DataInformasi::detail/$1');
+$routes->add('/admin/informasi/update', 'Admin\DataInformasi::update');
+$routes->delete('/admin/informasi/hapus/(:num)', 'Admin\DataInformasi::hapus/$1');
+
+$routes->get('/admin/student', 'Admin\DataStudent::index');
+$routes->get('/admin/student/tambah', 'Admin\DataStudent::tambah');
+$routes->add('/admin/student/simpan', 'Admin\DataStudent::simpan');
+$routes->get('/admin/student/(:num)', 'Admin\DataStudent::detail/$1');
+$routes->get('/admin/student/ubah/(:segment)', 'Admin\DataStudent::ubah/$1');
+$routes->add('/admin/student/update', 'Admin\DataStudent::update');
+$routes->delete('/admin/student/hapus/(:num)', 'Admin\DataStudent::hapus/$1');
 $routes->get('/', 'Guru\Beranda::index');
 
 

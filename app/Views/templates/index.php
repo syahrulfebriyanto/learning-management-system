@@ -109,6 +109,32 @@
     <script src="<?= base_url() ?>/assets/template/js/demo/datatables-demo.js"></script>
 
     <?= $this->renderSection('script'); ?>
+    <script>
+        function previewImg() {
+            // JS FOR UPLOAD
+
+            // file javascript untuk membuat user baru
+            // untuk mengambil inputan sampul dengan mengambil element yang id nya #sampul
+            const foto = document.querySelector('#foto');
+            const fotoLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview')
+
+            // GANTI URL
+            // untuk tulisan label sampul | textContent = isinya | files[0] = file yang di upload | .nama = ambil namanya
+            fotoLabel.textContent = foto.files[0].name;
+
+            // GANTI PREVIEW
+            // untuk mengambil file yang di upload
+            const fileFoto = new FileReader();
+            // ambil alamat penyimpanannya lalu ambil nama filenya untuk disimpan di gambarnya
+            fileFoto.readAsDataURL(foto.files[0]);
+
+            // ketika file sampul ini onload. jalankan fungsi yang mengirimkan event si image preview. sorce nya di ganti dengan nama gambar baru di upload diambil dari e.targer.resiult
+            fileFoto.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
 
 </html>
